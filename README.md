@@ -17,7 +17,7 @@ Um aplicativo de monitoramento, e acompanhamento para auxiliar o Hospital Das Cl
 
 ### Instalação
 
-Primeiro clone o repositório para sua máquina local:
+Coloque o repositório na sua máquina local:
 
 ```
 git clone https://github.com/JaumPyetro/R.O.S.A.git)
