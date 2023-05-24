@@ -1,0 +1,12 @@
+REGULAMENTO DE USO DO APLICATIVO
+
+OBJETIVO:
+Facilitar o monitoramento de entrada e saída dos residentes. E, melhorar a comunicação entre os receptores.
+
+ATENÇÃO:
+
+- Esse aplicativo está em fase de teste, podendo ter alguns defeitos.
+- Para uso inicial, vamos manter apenas no terminal.
+
+CONTATO:
+jpan@cesar.school
