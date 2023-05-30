@@ -1,12 +1,25 @@
-REGULAMENTO DE USO DO APLICATIVO
-
-OBJETIVO:
-Facilitar o monitoramento de entrada e saída dos residentes. E, melhorar a comunicação entre os receptores.
-
 ATENÇÃO:
 
-- Esse aplicativo está em fase de teste, podendo ter alguns defeitos.
-- Para uso inicial, vamos manter apenas no terminal.
+ESSE APLICATIVO ESTÁ EM FASE DE TESTE.
 
-CONTATO:
-jpan@cesar.school
+SOBRE A ROSA
+
+A ROSA é um grupo de tecnologia dedicado a oferecer soluções personalizadas para otimizar serviços de avaliação, acompanhamento e monitoria em diversas áreas, incluindo a saúde. Nós acreditamos que a tecnologia é capaz de tornar processos mais eficientes, práticos e acessíveis. O nome ROSA vem da sigla para Reconhecimento Otimizado de Sistema de Acompanhamento.
+
+Para saber mais sobre a ROSA e nosso processo, visite nosso site em: 'https://sites.google.com/cesar.school/r-o-s-a/inicio?authuser=1'. Lá você encontrará informações detalhadas sobre nosso trabalho e como podemos ajudá-lo.
+
+O QUE É ESSE APLICATIVO?
+
+COMO USAR?
+
+MENSAGENS DE ERRO:
+
+SUPORTE:
+
+Caso encontre algum erro de funcionalidade no aplicativo, por favor, entre em contato com o gestor do projeto ROSA. Você pode enviar um email para 'jpan@cesar.school'.
+
+Para problemas relacionados à interface do aplicativo, por favor, entre em contato conosco pelo email 'mpc4@cesar.school'.
+
+Se você tiver dúvidas gerais sobre o aplicativo, também pode nos contatar pelo email 'jpan@cesar.school'. Estaremos prontos para ajudar!
+
+VERSÃO: 1.01
