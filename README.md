@@ -22,3 +22,18 @@ Coloque o repositório na sua máquina local:
 ```
 git clone https://github.com/JaumPyetro/R.O.S.A.git)
 ```
+### Usando
+#Como criar contas?
+
+1°- Login
+2°- Login de Gestor
+3°- Utilize essa conta fixa: admin
+                             12345
+
+4°- selecione criar conta
+5°- seleciona o tipo de conta(residente ou receptor)
+6°- escreva o email(dominio obrigatório - cesar.school)
+7°- digite a senha(máximo de 8 dígitos)
+
+Conta criada!
+
