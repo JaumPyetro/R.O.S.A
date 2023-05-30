@@ -4,18 +4,22 @@
 
 void Regulamento() {
   printf("\n");
+
   FILE *arquivo = fopen("Regulamento.txt", "r");
+
   if (arquivo == NULL) {
     printf("Lamentamos, mas não conseguimos encontrar o regulamento. Por favor, entre em contato conosco pelo email jpan@cesar.school para obter assistência.\n");
     return;
   }
 
   char linha[1000];
+
   while (fgets(linha, sizeof(linha), arquivo)) {
     printf("%s", linha);
   }
 
   fclose(arquivo);
+  
   printf("\n");
   printf("\nPressione 1 para voltar ao menu ou 0 para sair: ");
   int opcao;
@@ -30,7 +34,8 @@ void Regulamento() {
   if (opcao == 1) {
     printf("\n");
     main(); // Chama o menu principal novamente
-  } else {
+  } 
+  else {
     printf("\n");
     printf("Saindo do programa...\n");
   }
@@ -59,6 +64,7 @@ void criarContaResidente() {
   }
 
   FILE *arquivo = fopen("contas_residente.txt", "a");
+
   if (arquivo == NULL) {
     printf("Erro ao abrir o arquivo 'contas_residente.txt'!\n");
     return;
@@ -93,6 +99,7 @@ void criarContaReceptor() {
   }
 
   FILE *arquivo = fopen("contas_receptor.txt", "a");
+
   if (arquivo == NULL) {
     printf("Erro ao abrir o arquivo 'contas_receptor.txt'!\n");
     return;
@@ -105,11 +112,14 @@ void criarContaReceptor() {
 }
 
 void criarConta(char tipoConta[]) {
+
   if (strcmp(tipoConta, "residente") == 0) {
     criarContaResidente();
-  } else if (strcmp(tipoConta, "receptor") == 0) {
+  } 
+  else if (strcmp(tipoConta, "receptor") == 0) {
     criarContaReceptor();
-  } else {
+  } 
+  else {
     printf("Tipo de conta invalido!\n");
   }
 }
@@ -131,6 +141,7 @@ void loginResidente() {
   scanf("%s", senha);
 
   FILE *arquivo = fopen("contas_residente.txt", "r");
+
   if (arquivo == NULL) {
     printf("Por favor, solicite ao Gestor para que crie uma conta\n");
     return;
@@ -155,7 +166,8 @@ void loginResidente() {
 
   if (loginValido) {
     printf("Login de residente bem-sucedido!\n");
-  } else {
+  } 
+  else {
     printf("Email ou senha invalidos!\n");
     return loginResidente();
   }
@@ -178,6 +190,7 @@ void loginReceptor() {
   scanf("%s", senha);
 
   FILE *arquivo = fopen("contas_receptor.txt", "r");
+
   if (arquivo == NULL) {
     printf("Por favor, solicite ao Gestor para que crie uma conta\n");
     return;
@@ -202,7 +215,8 @@ void loginReceptor() {
 
   if (loginValido) {
     printf("Login de receptor bem-sucedido!\n");
-  } else {
+  } 
+  else {
     printf("Email ou senha invalidos!\n");
     return loginReceptor();
   }
@@ -222,6 +236,7 @@ void loginGestor() {
     printf("Login de gestor bem-sucedido!\n");
 
     int opcao;
+
     do {
       printf("\nEscolha uma opcao:\n");
       printf("1. Criar conta\n");
@@ -229,28 +244,29 @@ void loginGestor() {
       scanf("%d", &opcao);
 
       switch (opcao) {
-      case 1: {
-        char tipoConta[20];
-        printf("\nEscolha o tipo de conta a criar (residente ou receptor): ");
-        scanf("%s", tipoConta);
-        criarConta(tipoConta);
-        break;
-      }
-      case 0:
-        printf("Voltando ao menu de login...\n");
-        break;
-      default:
-        printf("Opcao invalida!\n");
-        break;
+        case 1:
+          char tipoConta[20];
+          printf("\nEscolha o tipo de conta a criar (residente ou receptor): ");
+          scanf("%s", tipoConta);
+          criarConta(tipoConta);
+          break;
+        case 0:
+          printf("Voltando ao menu de login...\n");
+          break;
+        default:
+          printf("Opcao invalida!\n");
+          break;
       }
     } while (opcao != 0);
-  } else {
+  }
+  else {
     printf("Usuario ou senha invalidos!\n");
   }
 }
 
 void login() {
   int opcao;
+
   printf("Escolha uma opcao:\n");
   printf("1. Login Residente\n");
   printf("2. Login Receptor\n");
@@ -258,18 +274,18 @@ void login() {
   scanf("%d", &opcao);
 
   switch (opcao) {
-  case 1:
-    loginResidente();
-    break;
-  case 2:
-    loginReceptor();
-    break;
-  case 3:
-    loginGestor();
-    break;
-  default:
-    printf("Opcao invalida!\n");
-    break;
+    case 1:
+      loginResidente();
+      break;
+    case 2:
+      loginReceptor();
+      break;
+    case 3:
+      loginGestor();
+      break;
+    default:
+      printf("Opcao invalida!\n");
+      break;
   }
 }
 
