@@ -244,12 +244,13 @@ void loginGestor() {
       scanf("%d", &opcao);
 
       switch (opcao) {
-        case 1:
+        case 1: {
           char tipoConta[20];
           printf("\nEscolha o tipo de conta a criar (residente ou receptor): ");
           scanf("%s", tipoConta);
           criarConta(tipoConta);
           break;
+        }
         case 0:
           printf("Voltando ao menu de login...\n");
           break;
