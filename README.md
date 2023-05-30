@@ -1,6 +1,6 @@
 # R.O.S.A
 
-### Grupo: João Pedro Nóbrega, Marília Pacífico, David Cândido, Felipe Antunes, Matheus Victor, Mell Brayner, Lucas Dias, Gabriel Moura, Marcelo Cavalcanti, João Sampaio.
+### Grupo: David Cândido, Felipe Antunes, Gabriel Moura, João Pedro Nóbrega, João Sampaio, Lucas Dias, Marcelo Cavalcanti, Marília Pacífico, Matheus Victor, Mell Brayner.
 
 ## Board do Trello:
 [Link para o Board do Trello](https://trello.com/invite/b/sGkMIuOn/ATTI4c3895e75620111def0a79e190ac044eE677815F/projeto-2)
