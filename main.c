@@ -18,7 +18,7 @@ int main() {
       break;
     case 2:
       Regulamento();
-      opcao = 1; // Definir opcao como 1 para voltar ao menu principal
+      opcao = 1; // Definir opção como 1 para voltar ao menu principal
       break;
     case 0:
       printf("Saindo do programa...\n");
