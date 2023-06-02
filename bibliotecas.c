@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 
-void Regulamento() {
+void Regulamento(int *continuar) { // Recebe a variável "continuar" como parâmetro
   printf("\n");
 
-  FILE *arquivo = fopen("Regulamento.txt", "r");
+  FILE*arquivo = fopen("Regulamento.txt", "r");
 
   if (arquivo == NULL) {
     printf("Lamentamos, mas não conseguimos encontrar o regulamento. Por favor, entre em contato conosco pelo email jpan@cesar.school para obter assistência.\n");
@@ -19,9 +19,9 @@ void Regulamento() {
   }
 
   fclose(arquivo);
-  
+
   printf("\n");
-  printf("\nPressione 1 para voltar ao menu ou 0 para sair: ");
+  printf("\nPressione 1 para voltar ao menu ou 0 para sair do programa: ");
   int opcao;
   scanf("%d", &opcao);
 
@@ -32,11 +32,10 @@ void Regulamento() {
   }
 
   if (opcao == 1) {
-    printf("\n");
-    main(); // Chama o menu principal novamente
-  } 
+    printf("Voltando ao programa...\n");
+  }
   else {
-    printf("\n");
+    *continuar = 0; // Defino a variável "continuar" como 0 para encerrar o loop no menu principal
     printf("Saindo do programa...\n");
   }
 }
