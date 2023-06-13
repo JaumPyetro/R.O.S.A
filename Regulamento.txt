@@ -1,25 +1,164 @@
-ATENÇÃO:
+**REGULAMENTO DO APLICATIVO ROSA**
 
-ESSE APLICATIVO ESTÁ EM FASE DE TESTE.
+**ATENÇÃO:**
 
-SOBRE A ROSA
+ESTE APLICATIVO ESTÁ EM FASE DE TESTE!
 
-    A ROSA é um grupo de tecnologia revolucionário, dedicado a transformar a maneira como avaliamos, acompanhamos e monitoramos serviços em várias áreas, incluindo a saúde. Nós somos movidos pela crença de que a tecnologia tem o poder de otimizar processos, tornando-os mais eficientes, práticos e acessíveis a todos. Além disso, temos o nosso nome ROSA, na qual reflete nossa busca contínua pela excelência: Reconhecimento Otimizado de Sistema de Acompanhamento. Essa sigla representa nossa dedicação em desenvolver sistemas inteligentes que reconhecem e se adaptam às necessidades específicas de cada cliente.
-    
-    Para saber mais sobre a ROSA e nosso processo, visite nosso site em: 'https://sites.google.com/cesar.school/r-o-s-a/inicio?authuser=1'. Lá você encontrará informações detalhadas sobre nosso trabalho e como podemos ajudá-lo.
+**SOBRE A ROSA**
 
-O QUE É ESSE APLICATIVO?
+A ROSA é um grupo de tecnologia revolucionário dedicado a transformar a maneira como avaliamos, acompanhamos e monitoramos serviços em várias áreas, incluindo a saúde. Somos movidos pela crença de que a tecnologia tem o poder de otimizar processos, tornando-os mais eficientes, práticos e acessíveis a todos. Além disso, o nosso nome ROSA reflete nossa busca contínua pela excelência: Reconhecimento Otimizado de Sistema de Acompanhamento. Essa sigla representa nossa dedicação em desenvolver sistemas inteligentes que reconhecem e se adaptam às necessidades específicas de cada cliente.
 
-COMO USAR?
+Para saber mais sobre a ROSA e nosso processo, visite nosso site em: [https://sites.google.com/cesar.school/r-o-s-a/inicio?authuser=1](https://sites.google.com/cesar.school/r-o-s-a/inicio?authuser=1). Lá você encontrará informações detalhadas sobre nosso trabalho e como podemos ajudá-lo.
 
-MENSAGENS DE ERRO:
+**SOBRE O APLICATIVO**
 
-SUPORTE:
+O aplicativo ROSA tem como função auxiliar o Hospital das Clínicas com o problema de monitoramento das avaliações dos residentes e controle de presença. Com um sistema otimizado de registro, o residente poderá marcar presença utilizando um TOTEM que ficará na entrada. Além disso, a gestão do hospital terá um controle maior do desempenho do residente e saberá se ele está presente ou não. O preceptor também terá sua vida facilitada, pois a ficha de avaliação será digital e de fácil uso. Agora o preceptor pode enviar avisos e feedbacks para o residente, auxiliando no seu processo. Com todas essas funções e muito mais, o residente poderá ter ciência do que está fazendo e se está realizando suas atividades da melhor forma possível, enquanto o preceptor terá uma ferramenta melhor para avaliar e auxiliar o processo de residência.
 
-    Caso encontre algum erro de funcionalidade no aplicativo, por favor, entre em contato com o gestor do projeto ROSA. Você pode enviar um email para 'jpan@cesar.school'.
+**COMO USAR O TOTEM?**
 
-    Para problemas relacionados à interface do aplicativo, por favor, entre em contato conosco pelo email 'mpc4@cesar.school'.
+SELECIONE 'TOTEM' (1)
 
-    Se você tiver dúvidas gerais sobre o aplicativo, também pode nos contatar pelo email 'jpan@cesar.school'. Estaremos prontos para lhe ajudar!
+OBS: Para utilizar, é necessário ter criado uma conta de residente, pois é um processo único para monitoramento do residente.
+
+DIGITE A SUA CHAVE DE ACESSO (6 DÍGITOS):
+Essa chave de acesso pode ser encontrada dentro do aplicativo, em MENU RESIDENTE -> CHAVE DE ACESSO.
+
+Após inserir a chave de acesso, por favor, responda o questionário e confirme. Após isso, pode ficar tranquilo, o processo será finalizado e sua entrada será registrada. Ao inserir novamente para SAIR, o totem reconhecerá que você já entrou e registrará sua saída, salvando o tempo de permanência.
+
+Esse tempo pode ser encontrado em MENU RESIDENTE -> PRESENÇA.
+
+E por favor, responda os questionários para finalizar o registro.
+
+**COMO USAR O APLICATIVO ROSA?**
+
+SELECIONE 'APLICATIVO' (2)
+
+OBS: Para o residente ou preceptor usar o aplicativo, é necessário ter uma conta criada. Para criar sua conta, entre em contato com a gestão do hospital, onde terá total controle.
+
+**GEST
+
+OR** - Para utilizar a interface de Gestor, siga as instruções abaixo:
+
+1. No MENU inicial, selecione a opção "Login".
+2. No MENU de Login, selecione a opção "Login Gestor".
+
+**LOGIN GESTOR**
+Usuário: 'admin'
+Senha: '12345'
+
+**CRIAR CONTA** (1)
+Selecione uma opção:
+Residente (1)
+Preceptor (2)
+
+**CRIAR CONTA RESIDENTE** - (CPF / NOME COMPLETO / SENHA / CONFIRMAR SENHA)
+**CRIAR CONTA PRECEPTOR** - (CPF / NOME COMPLETO / SENHA / CONFIRMAR SENHA)
+
+**LISTA DE RESIDENTES** (2)
+Imprime na tela a lista completa de residentes separados por sua residência. Selecione um residente para visualizar o seu progresso e presença.
+
+**LISTA DE PRECEPTORES** (3)
+Imprime na tela a lista completa de preceptores.
+
+Digite 0 para Sair!
+
+**APÓS TER AS CONTAS CRIADAS**
+
+Agora vamos às funcionalidades. Para entrar na conta de residente e preceptor, siga os mesmos passos descritos para o Gestor. No momento do login, siga os passos adicionais abaixo:
+
+**LOGIN RESIDENTE**
+CPF:
+SENHA:
+
+**LOGIN PRECEPTOR**
+CPF:
+SENHA:
+
+Ambas interfaces têm sua "HOME", porém com funcionalidades distintas que se comunicam diretamente.
+
+**RESIDENTE**
+
+1. Chave de Acesso
+2. Presença
+3. Progresso
+4. Avaliação
+5. Feedback
+
+**PRECEPTOR**
+
+1. Lista de Residentes
+
+**SUPORTE**
+
+Caso encontre algum erro de funcionalidade no aplicativo, entre em contato com o gestor do projeto ROSA. Você pode enviar um email para 'jpan@cesar.school'.
+
+Para problemas relacionados à interface do aplicativo, entre em contato conosco pelo email 'mpc4@cesar.school'.
+
+Se você tiver dúvidas gerais sobre o aplicativo, também pode nos contatar pelo email 'jpan@cesar.school'. Estaremos prontos para ajudar!
+
+**ATUALIZAÇÕES**
 
 VERSÃO: 1.01
+- CRIAÇÃO DO CÓDIGO
+
+VERSÃO: 1.1
+- REFATORAÇÃO DO CÓDIGO
+
+VERSÃO: 1.2
+- ADIÇÃO DE FUNÇÕES NAS 3 INTERFACES
+
+VERSÃO: 1.3
+- NOVA REFATORAÇÃO
+
+VERSÃO: 1.4
+- REVISÃO DO CÓDIGO
+
+VERSÃO: 1.5
+- CORREÇÃO DE BUGS NO REGISTRO DE PRESENÇA
+
+VERSÃO: 1.6
+- MUDANÇAS EM FUNCIONALIDADES
+- ADIÇÃO DA CHAVE DE ACESSO
+
+VERSÃO: 1.7
+- REFATORAÇÃO DAS MENSAGENS IMPRESSAS
+
+VERSÃO: 1.8
+- ADIÇÃO DE FUNCIONALIDADES:
+  - FICHA AVALIATIVA (PRECEPTOR)
+  - FEEDBACK (PRECEPTOR)
+  - VISUALIZAR PROGRESSO DO RESIDENTE (GESTOR E PRECEPTOR)
+
+VERSÃO: 1.9
+- ÚLTIMA ADIÇÃO:
+  - VISUALIZAR F
+
+ICHA AVALIATIVA (RESIDENTE)
+  - VISUALIZAR FEEDBACK (RESIDENTE)
+- GRANDE COMMIT!
+
+VERSÃO: 2.0
+- TESTES COMPLETOS COM SUCESSO!
+
+**PREVENÇÃO DE ERROS**
+
+Certifique-se de que a pasta contenha os seguintes arquivos, pois sem eles o aplicativo não funcionará:
+
+Arquivos na pasta C:
+
+- main.c
+- bibliotecas.c
+- bibliotecas.h
+
+Arquivos na pasta txt:
+
+- feedback.txt
+- fichaDeAvaliacao.txt
+- preceptorDados.txt
+- presencaResidente.txt
+- registroResidente.txt
+- regulamento.txt
+- residenteChaves.txt
+- residenteDados.txt
+
+**ROSA AGRADECE!**
