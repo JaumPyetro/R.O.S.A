@@ -223,19 +223,20 @@ void criarContaResidente() {
 
   fclose(arquivo);
 
-// Adicione este código para salvar a chave de acesso junto com o nome do residente no arquivo residenteChaves.txt
-FILE *file = fopen("residenteChaves.txt", "a");
-if (file == NULL) {
+  // Adicione este código para salvar a chave de acesso junto com o nome do
+  // residente no arquivo residenteChaves.txt
+  FILE *file = fopen("residenteChaves.txt", "a");
+  if (file == NULL) {
     printf("Erro ao abrir o arquivo residenteChaves.txt.\n");
     return;
-}
+  }
 
-fprintf(file, "%s\n", nome);
-fprintf(file, "%s\n", chaveAcesso);
+  fprintf(file, "%s\n", nome);
+  fprintf(file, "%s\n", chaveAcesso);
 
-fclose(file);
+  fclose(file);
 
-printf("Conta de Residente criada com sucesso!\n");
+  printf("Conta de Residente criada com sucesso!\n");
 }
 
 void criarContaPreceptor() {
@@ -477,25 +478,25 @@ void ListaDeResidentes() {
       scanf("%d", &opcao);
 
       switch (opcao) {
-        case 1:
-          printf("\n--- Monitoramento ---\n");
-          printf("Nome: %s\n", residentes[escolha].nome);
-          printf("Curso: %s\n", residentes[escolha].curso);
-          calendario(residentes[escolha].nome);
-          showTotalProgress(residentes[escolha].nome);
-          break;
-        case 2:
-          printf("\n--- Feedback ---\n");
-          feedback(residentes[escolha].nome);
-          break;
-        case 3:
-          fichaAvaliativa(residentes[escolha].nome, residentes[escolha].curso);
-          break;
-        case 4:
-          break;
-        default:
-          printf("Opção inválida.\n");
-          break;
+      case 1:
+        printf("\n--- Monitoramento ---\n");
+        printf("Nome: %s\n", residentes[escolha].nome);
+        printf("Curso: %s\n", residentes[escolha].curso);
+        calendario(residentes[escolha].nome);
+        showTotalProgress(residentes[escolha].nome);
+        break;
+      case 2:
+        printf("\n--- Feedback ---\n");
+        feedback(residentes[escolha].nome);
+        break;
+      case 3:
+        fichaAvaliativa(residentes[escolha].nome, residentes[escolha].curso);
+        break;
+      case 4:
+        break;
+      default:
+        printf("Opção inválida.\n");
+        break;
       }
     } while (opcao != 4);
   } else {
@@ -592,72 +593,72 @@ void homeResidente(char *nomeResidente) {
     scanf("%d", &opcao);
 
     switch (opcao) {
-      case 1: {
-        FILE *file = fopen("residenteChaves.txt", "r");
-        if (file == NULL) {
-          printf("Erro ao abrir o arquivo residenteChaves.txt.\n");
+    case 1: {
+      FILE *file = fopen("residenteChaves.txt", "r");
+      if (file == NULL) {
+        printf("Erro ao abrir o arquivo residenteChaves.txt.\n");
+        break;
+      }
+
+      char line[100];
+      char name[50];
+      int residentFound = 0;
+
+      while (fgets(line, sizeof(line), file) != NULL) {
+        strcpy(name, line);
+        name[strcspn(name, "\n")] = '\0'; // Remover a quebra de linha
+        if (strcmp(name, nomeResidente) == 0) {
+          residentFound = 1;
+          fgets(line, sizeof(line), file);
+          strcpy(accessKey, line);
+          accessKey[strcspn(accessKey, "\n")] =
+              '\0'; // Remover a quebra de linha
           break;
         }
-
-        char line[100];
-        char name[50];
-        int residentFound = 0;
-
-        while (fgets(line, sizeof(line), file) != NULL) {
-          strcpy(name, line);
-          name[strcspn(name, "\n")] = '\0'; // Remover a quebra de linha
-          if (strcmp(name, nomeResidente) == 0) {
-            residentFound = 1;
-            fgets(line, sizeof(line), file);
-            strcpy(accessKey, line);
-            accessKey[strcspn(accessKey, "\n")] = '\0'; // Remover a quebra de linha
-            break;
-          }
-        }
-
-        fclose(file);
-
-        if (residentFound) {
-          printf("\n");
-        } else {
-          printf("Nao foi possivel encontrar sua chave de acesso.\n");
-        }
-        break;
       }
 
-      case 2: {
-        calendario(nomeResidente);
-        printf("\n\n--- REGISTRO DE PRESENÇA ---\n");
-        registro(nomeResidente, accessKey);
-        break;
+      fclose(file);
+
+      if (residentFound) {
+        printf("Chave de acesso: %s\n", accessKey);
+      } else {
+        printf("Nao foi possivel encontrar sua chave de acesso.\n");
+      }
+      break;
+    }
+    case 2: {
+      calendario(nomeResidente);
+      printf("\n\n--- REGISTRO DE PRESENÇA ---\n");
+      registro(nomeResidente, accessKey);
+      break;
     }
 
-      case 3:{
-        
-        showTotalProgress(nomeResidente);
-        break;
-      }
-      case 4:{
-        printf("\n\n--- FICHAS DE AVALIAÇÃO ---\n");
-        imprimirFichaAvaliacao(nomeResidente);
-        break;
-      }
-      case 5:{
-        printf("\n\n--- FEEDBACK ---\n");
-        imprimirFeedback(nomeResidente);
-        break;
-      }
-      case 0:{
-        printf("Saindo...\n");
-        break;
-      }
-        default:{
-        printf("Opcao invalida.\n");
-        }
+    case 3: {
+
+      showTotalProgress(nomeResidente);
+      break;
+    }
+    case 4: {
+      printf("\n\n--- FICHAS DE AVALIAÇÃO ---\n");
+      imprimirFichaAvaliacao(nomeResidente);
+      break;
+    }
+    case 5: {
+      printf("\n\n--- FEEDBACK ---\n");
+      imprimirFeedback(nomeResidente);
+      break;
+    }
+    case 0: {
+      printf("Saindo...\n");
+      break;
+    }
+    default: {
+      printf("Opcao invalida.\n");
+    }
     }
   } while (opcao != 0);
 }
-    
+
 void calendario(char *nomeResidente) {
 
   int dias = 30;
@@ -801,24 +802,26 @@ void showTotalProgress(char *nomeResidente) {
 
   fclose(presenceFile);
 
-if (!accessKeyFound) {
-printf("Não foi possível encontrar sua chave de acesso no arquivo presencaResidente.txt.\n");
-} else {
-int progress=totalSeconds/63360;
-printf("[");
-for(int i=0;i<progress;i++){
-printf("#");
-}
-for(int i=progress;i<10;i++){
-printf(" ");
-}
-printf("]\n");
+  if (!accessKeyFound) {
+    printf("Não foi possível encontrar sua chave de acesso no arquivo "
+           "presencaResidente.txt.\n");
+  } else {
+    int progress = totalSeconds / 63360;
+    printf("[");
+    for (int i = 0; i < progress; i++) {
+      printf("#");
+    }
+    for (int i = progress; i < 10; i++) {
+      printf(" ");
+    }
+    printf("]\n");
 
-div_t hours=div(totalSeconds ,3600);
-div_t minutes=div(hours.rem ,60);
+    div_t hours = div(totalSeconds, 3600);
+    div_t minutes = div(hours.rem, 60);
 
-printf("Tempo total: %02d:%02d:%02d\n",hours.quot ,minutes.quot ,minutes.rem );
-}
+    printf("Tempo total: %02d:%02d:%02d\n", hours.quot, minutes.quot,
+           minutes.rem);
+  }
 }
 
 void registro(char *nomeResidente, char *accessKey) {
@@ -867,8 +870,8 @@ void registro(char *nomeResidente, char *accessKey) {
 
       while (fgets(line2, sizeof(line2), file2) != NULL) {
         if (strncmp(line2, accessKey, strlen(accessKey)) == 0 &&
-            sscanf(line2, "%*s %s %d-%d-%d %s", residencyProgram,
-                   &year, &month, &day, dayActivity) == 5 &&
+            sscanf(line2, "%*s %s %d-%d-%d %s", residencyProgram, &year, &month,
+                   &day, dayActivity) == 5 &&
             day == dia) {
           infoFound = 1;
           break;
@@ -876,10 +879,8 @@ void registro(char *nomeResidente, char *accessKey) {
       }
 
       if (infoFound) {
-        printf("Dia %d: %dh %02dm %02ds\n", dia,
-               tempoPermanencia[dia] / 3600,
-               (tempoPermanencia[dia] / 60) % 60,
-               tempoPermanencia[dia] % 60);
+        printf("Dia %d: %dh %02dm %02ds\n", dia, tempoPermanencia[dia] / 3600,
+               (tempoPermanencia[dia] / 60) % 60, tempoPermanencia[dia] % 60);
         printf("Programa de residência: %s\n", residencyProgram);
         printf("Atividade do dia: %s\n", dayActivity);
       } else {
@@ -892,107 +893,113 @@ void registro(char *nomeResidente, char *accessKey) {
 }
 
 void homeTotem() {
-    char access_key[7];
-    printf("Digite a chave de acesso de 6 dígitos: ");
-    scanf("%s", access_key);
-    FILE *f = fopen("residenteChaves.txt", "r");
-    char line[256];
-    int found = 0;
-    char name[256];
+  char access_key[7];
+  printf("Digite a chave de acesso de 6 dígitos: ");
+  scanf("%s", access_key);
+  FILE *f = fopen("residenteChaves.txt", "r");
+  char line[256];
+  int found = 0;
+  char name[256];
+  while (fgets(line, sizeof(line), f)) {
+    line[strcspn(line, "\n")] = 0;
+    if (strcmp(line, access_key) == 0) {
+      found = 1;
+      break;
+    }
+    strcpy(name, line);
+  }
+  fclose(f);
+  if (found) {
+    f = fopen("presencaResidente.txt", "r");
+    int last_entry = 0;
+    char last_entry_time[20];
     while (fgets(line, sizeof(line), f)) {
-        line[strcspn(line, "\n")] = 0;
-        if (strcmp(line, access_key) == 0) {
-            found = 1;
-            break;
+      if (strstr(line, access_key) != NULL) {
+        if (strstr(line, " E ") != NULL) {
+          last_entry = 1;
+          strncpy(last_entry_time, strstr(line, " E ") + 3, 19);
+        } else if (strstr(line, " S ") != NULL) {
+          last_entry = 0;
         }
-        strcpy(name, line);
+      }
     }
     fclose(f);
-    if (found) {
-        f = fopen("presencaResidente.txt", "r");
-        int last_entry = 0;
-        char last_entry_time[20];
-        while (fgets(line, sizeof(line), f)) {
-            if (strstr(line, access_key) != NULL) {
-                if (strstr(line, " E ") != NULL) {
-                    last_entry = 1;
-                    strncpy(last_entry_time, strstr(line, " E ") + 3, 19);
-                } else if (strstr(line, " S ") != NULL) {
-                    last_entry = 0;
-                }
-            }
-        }
-        fclose(f);
-        f = fopen("presencaResidente.txt", "a");
-        time_t now = time(NULL);
-        struct tm *t = localtime(&now);
-        if (last_entry) {
-            fprintf(f, "%s S %d-%02d-%02d %02d:%02d:%02d\n", access_key, t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec);
-            printf("SAÍDA SALVA PARA %s\n", name);
-            struct tm entry_time;
-            strptime(last_entry_time, "%Y-%m-%d %H:%M:%S", &entry_time);
-            time_t entry_time_t = mktime(&entry_time);
-            int duration = difftime(now, entry_time_t);
-            fprintf(f, "%d\n", duration);
-        } else {
-            fprintf(f, "%s E %d-%02d-%02d %02d:%02d:%02d\n", access_key, t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec);
-            printf("ENTRADA SALVA PARA %s\n", name);
-        }
-        fclose(f);
-
-        // Questionamentos
-        char programa_residencia[256];
-        char atividade_dia[256];
-
-        printf("Programa de residência (Médica/Multiprofissional/Enfermagem/Nutrição): ");
-        scanf("%s", programa_residencia);
-
-        printf("Atividade do dia (Teóricas/Práticas): ");
-        scanf("%s", atividade_dia);
-
-        // Salvando no arquivo de registro
-        f = fopen("registroResidente.txt", "a");
-        fprintf(f, "%s %s %d-%02d-%02d %s\n", access_key, programa_residencia, t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, atividade_dia);
-        fclose(f);
+    f = fopen("presencaResidente.txt", "a");
+    time_t now = time(NULL);
+    struct tm *t = localtime(&now);
+    if (last_entry) {
+      fprintf(f, "%s S %d-%02d-%02d %02d:%02d:%02d\n", access_key,
+              t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour,
+              t->tm_min, t->tm_sec);
+      printf("SAÍDA SALVA PARA %s\n", name);
+      struct tm entry_time;
+      strptime(last_entry_time, "%Y-%m-%d %H:%M:%S", &entry_time);
+      time_t entry_time_t = mktime(&entry_time);
+      int duration = difftime(now, entry_time_t);
+      fprintf(f, "%d\n", duration);
     } else {
-        printf("Chave de acesso inválida\n");
+      fprintf(f, "%s E %d-%02d-%02d %02d:%02d:%02d\n", access_key,
+              t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour,
+              t->tm_min, t->tm_sec);
+      printf("ENTRADA SALVA PARA %s\n", name);
     }
+    fclose(f);
+
+    // Questionamentos
+    char programa_residencia[256];
+    char atividade_dia[256];
+
+    printf("Programa de residência "
+           "(Médica/Multiprofissional/Enfermagem/Nutrição): ");
+    scanf("%s", programa_residencia);
+
+    printf("Atividade do dia (Teóricas/Práticas): ");
+    scanf("%s", atividade_dia);
+
+    // Salvando no arquivo de registro
+    f = fopen("registroResidente.txt", "a");
+    fprintf(f, "%s %s %d-%02d-%02d %s\n", access_key, programa_residencia,
+            t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, atividade_dia);
+    fclose(f);
+  } else {
+    printf("Chave de acesso inválida\n");
+  }
 }
 
 void remove_duplicate_lines() {
-    char *filename = "registroResidente.txt";
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo %s\n", filename);
-        exit(1);
-    }
+  char *filename = "registroResidente.txt";
+  FILE *file = fopen(filename, "r");
+  if (file == NULL) {
+    printf("Erro ao abrir o arquivo %s\n", filename);
+    exit(1);
+  }
 
-    char lines[MAX_LINE_LENGTH][MAX_LINE_LENGTH];
-    int line_count = 0;
-    while (fgets(lines[line_count], MAX_LINE_LENGTH, file) != NULL) {
-        line_count++;
-    }
-    fclose(file);
+  char lines[MAX_LINE_LENGTH][MAX_LINE_LENGTH];
+  int line_count = 0;
+  while (fgets(lines[line_count], MAX_LINE_LENGTH, file) != NULL) {
+    line_count++;
+  }
+  fclose(file);
 
-    file = fopen(filename, "w");
-    if (file == NULL) {
-        printf("Erro ao abrir o arquivo %s\n", filename);
-        exit(1);
-    }
+  file = fopen(filename, "w");
+  if (file == NULL) {
+    printf("Erro ao abrir o arquivo %s\n", filename);
+    exit(1);
+  }
 
-    for (int i = 0; i < line_count; i++) {
-        int is_duplicate = 0;
-        for (int j = 0; j < i; j++) {
-            if (strcmp(lines[i], lines[j]) == 0) {
-                is_duplicate = 1;
-                break;
-            }
-        }
-        if (!is_duplicate) {
-            fputs(lines[i], file);
-        }
+  for (int i = 0; i < line_count; i++) {
+    int is_duplicate = 0;
+    for (int j = 0; j < i; j++) {
+      if (strcmp(lines[i], lines[j]) == 0) {
+        is_duplicate = 1;
+        break;
+      }
     }
-    fclose(file);
+    if (!is_duplicate) {
+      fputs(lines[i], file);
+    }
+  }
+  fclose(file);
 }
 
 void fichaAvaliativa(char *nome, char *curso) {
@@ -1053,8 +1060,7 @@ void fichaAvaliativa(char *nome, char *curso) {
     float notaFinal =
         (assiduidade + pontualidade + biosseguranca + iniciativa +
          posturaEticoProfissional + relacionamentoEquipe + espiritoCritico +
-         comunicacao + planejamentoAtividadesEnfermagem +
-         dominioProcedimentos +
+         comunicacao + planejamentoAtividadesEnfermagem + dominioProcedimentos +
          evolucaoConsultaEnfermagemRegistroProcedimentos + lideranca) /
         10.0;
 
@@ -1388,18 +1394,18 @@ void ListaDeResidentesGestor() {
       scanf("%d", &opcao);
 
       switch (opcao) {
-        case 1:
-          printf("\n--- Monitoramento ---\n");
-          printf("Nome: %s\n", residentes[escolha].nome);
-          printf("Curso: %s\n", residentes[escolha].curso);
-          calendario(residentes[escolha].nome);
-          showTotalProgress(residentes[escolha].nome);
-          break;
-        case 2:
-          break;
-        default:
-          printf("Opção inválida.\n");
-          break;
+      case 1:
+        printf("\n--- Monitoramento ---\n");
+        printf("Nome: %s\n", residentes[escolha].nome);
+        printf("Curso: %s\n", residentes[escolha].curso);
+        calendario(residentes[escolha].nome);
+        showTotalProgress(residentes[escolha].nome);
+        break;
+      case 2:
+        break;
+      default:
+        printf("Opção inválida.\n");
+        break;
       }
     } while (opcao != 4);
   } else {
