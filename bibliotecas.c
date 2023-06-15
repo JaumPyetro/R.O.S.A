@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-//
+
 #define MAX_LINE_LENGTH 1000
 #define MAX_NAME_LENGTH 100
 #define ACCESS_KEY_LENGTH 6
@@ -64,7 +64,7 @@ void exibirRegulamento() {
 
   if (opcao == 0) {
     printf("\n");
-    aplicativoRosa(); // Volta para o menu do aplicativo
+    aplicativoRosa();
   }
 }
 
@@ -107,7 +107,7 @@ void loginGestor() {
 
   if (strcmp(usuario, "admin") == 0 && strcmp(senha, "12345") == 0) {
     printf("Login do Gestor bem-sucedido!\n");
-    homeGestor(); // Chama a função homeGestor após o login bem-sucedido
+    homeGestor();
   } else {
     printf("Usuario ou senha incorretos!\n");
   }
@@ -171,16 +171,15 @@ void criarContaResidente() {
   char senha[20];
   char confirmacaoSenha[20];
   char curso[50];
-  char chaveAcesso[7]; // Alterado para 7 para acomodar 6 dígitos e o caractere
-                       // nulo
+  char chaveAcesso[7];
   int i;
 
   printf("Criar conta de Residente\n");
 
   printf("Nome completo: ");
-  getchar(); // Limpar o buffer do teclado
+  getchar();
   fgets(nome, sizeof(nome), stdin);
-  nome[strcspn(nome, "\n")] = '\0'; // Remover a quebra de linha
+  nome[strcspn(nome, "\n")] = '\0'; 
 
   printf("CPF: ");
   scanf("%s", cpf);
@@ -197,11 +196,10 @@ void criarContaResidente() {
   }
 
   printf("Residência: ");
-  getchar(); // Limpar o buffer do teclado
+  getchar();
   fgets(curso, sizeof(curso), stdin);
-  curso[strcspn(curso, "\n")] = '\0'; // Remover a quebra de linha
+  curso[strcspn(curso, "\n")] = '\0';
 
-  // Gerar chave de acesso aleatória com 6 dígitos
   srand(time(NULL));
   for (i = 0; i < 6; i++) {
     chaveAcesso[i] = '0' + rand() % 10;
@@ -223,8 +221,6 @@ void criarContaResidente() {
 
   fclose(arquivo);
 
-  // Adicione este código para salvar a chave de acesso junto com o nome do
-  // residente no arquivo residenteChaves.txt
   FILE *file = fopen("residenteChaves.txt", "a");
   if (file == NULL) {
     printf("Erro ao abrir o arquivo residenteChaves.txt.\n");
@@ -251,9 +247,9 @@ void criarContaPreceptor() {
   scanf("%s", cpf);
 
   printf("Nome completo: ");
-  getchar(); // Limpar o buffer do teclado
+  getchar();
   fgets(nome, sizeof(nome), stdin);
-  nome[strcspn(nome, "\n")] = '\0'; // Remover a quebra de linha
+  nome[strcspn(nome, "\n")] = '\0';
 
   printf("Senha: ");
   scanf("%s", senha);
@@ -306,21 +302,21 @@ void loginPreceptor() {
 
   while (fgets(linha, sizeof(linha), arquivo) != NULL) {
     if (strstr(linha, "CPF:") ==
-        linha) { // Verifica se a linha começa com "CPF:"
+        linha) {
       sscanf(linha, "CPF: %11s", cpfArquivo);
       fgets(linha, sizeof(linha),
-            arquivo); // Lê a próxima linha após o CPF encontrado
+            arquivo);
 
-      fgets(linha, sizeof(linha), arquivo); // Lê a senha
+      fgets(linha, sizeof(linha), arquivo); 
 
       linha[strcspn(linha, "\n")] = '\0';
-      strcpy(senhaArquivo, linha + 7); // Ignora "Senha: "
+      strcpy(senhaArquivo, linha + 7);
 
       if (strcmp(cpf, cpfArquivo) == 0 && strcmp(senha, senhaArquivo) == 0) {
         encontrado = 1;
-        fgets(linha, sizeof(linha), arquivo); // Lê o nome
+        fgets(linha, sizeof(linha), arquivo);
         linha[strcspn(linha, "\n")] = '\0';
-        strcpy(nome, linha + 6); // Ignora "Nome: "
+        strcpy(nome, linha + 6);
         break;
       }
     }
@@ -330,8 +326,7 @@ void loginPreceptor() {
 
   if (encontrado) {
     printf("Login realizado com sucesso!\n");
-    homePreceptor(nome, cpf); // Passa o nome e o CPF do preceptor como
-                              // argumentos para a função homePreceptor()
+    homePreceptor(nome, cpf);
   } else {
     printf("CPF ou senha inválidos!\n");
   }
@@ -353,8 +348,8 @@ void homePreceptor(const char *nome, const char *cpf) {
     sscanf(linha, "CPF: %11s", cpfArquivo);
     if (strcmp(cpf, cpfArquivo) == 0) {
       fgets(linha, sizeof(linha),
-            arquivo);      // Lê a próxima linha após o CPF encontrado
-      printf("%s", linha); // Imprime a linha de baixo
+            arquivo); 
+      printf("%s", linha); 
       break;
     }
   }
@@ -427,16 +422,16 @@ void ListaDeResidentes() {
   char linha[100];
   while (fgets(linha, sizeof(linha), arquivo) != NULL) {
     if (strstr(linha, "Nome:") ==
-        linha) { // Verifica se a linha começa com "Nome:"
-      strcpy(residentes[numResidentes].nome, linha + 6); // Ignora "Nome: "
+        linha) {
+      strcpy(residentes[numResidentes].nome, linha + 6);
       residentes[numResidentes]
           .nome[strcspn(residentes[numResidentes].nome, "\n")] = '\0';
 
       while (fgets(linha, sizeof(linha), arquivo) != NULL) {
         if (strstr(linha, "Curso:") ==
-            linha) { // Verifica se a linha começa com "Curso:"
+            linha) { 
           strcpy(residentes[numResidentes].curso,
-                 linha + 7); // Ignora "Curso: "
+                 linha + 7);
           residentes[numResidentes]
               .curso[strcspn(residentes[numResidentes].curso, "\n")] = '\0';
           break;
@@ -529,16 +524,16 @@ int loginResidente() {
   while (fgets(linha, sizeof(linha), arquivo) != NULL) {
     if (strncmp(linha, "Nome: ", 6) == 0) {
       strcpy(nome, linha + 6);
-      nome[strcspn(nome, "\n")] = '\0'; // Remover a quebra de linha
+      nome[strcspn(nome, "\n")] = '\0';
     } else if (strncmp(linha, "CPF: ", 5) == 0) {
       strcpy(cpf, linha + 5);
-      cpf[strcspn(cpf, "\n")] = '\0'; // Remover a quebra de linha
+      cpf[strcspn(cpf, "\n")] = '\0'; 
       if (strcmp(cpf, cpfEntrada) == 0) {
         residenteEncontrado = 1;
       }
     } else if (strncmp(linha, "Senha: ", 7) == 0 && residenteEncontrado) {
       strcpy(senha, linha + 7);
-      senha[strcspn(senha, "\n")] = '\0'; // Remover a quebra de linha
+      senha[strcspn(senha, "\n")] = '\0'; 
       if (strcmp(senha, senhaEntrada) == 0) {
         fclose(arquivo);
         homeResidente(nome);
@@ -555,7 +550,7 @@ int loginResidente() {
 
 void homeResidente(char *nomeResidente) {
   int opcao;
-  char accessKey[11]; // Mova a declaração da variável accessKey para aqui
+  char accessKey[11];
   FILE *file = fopen("residenteChaves.txt", "r");
   if (file == NULL) {
     printf("Erro ao abrir o arquivo residenteChaves.txt.\n");
@@ -568,12 +563,12 @@ void homeResidente(char *nomeResidente) {
 
   while (fgets(line, sizeof(line), file) != NULL) {
     strcpy(name, line);
-    name[strcspn(name, "\n")] = '\0'; // Remover a quebra de linha
+    name[strcspn(name, "\n")] = '\0'; 
     if (strcmp(name, nomeResidente) == 0) {
       residentFound = 1;
       fgets(line, sizeof(line), file);
       strcpy(accessKey, line);
-      accessKey[strcspn(accessKey, "\n")] = '\0'; // Remover a quebra de linha
+      accessKey[strcspn(accessKey, "\n")] = '\0';
       break;
     }
   }
@@ -606,13 +601,13 @@ void homeResidente(char *nomeResidente) {
 
       while (fgets(line, sizeof(line), file) != NULL) {
         strcpy(name, line);
-        name[strcspn(name, "\n")] = '\0'; // Remover a quebra de linha
+        name[strcspn(name, "\n")] = '\0';
         if (strcmp(name, nomeResidente) == 0) {
           residentFound = 1;
           fgets(line, sizeof(line), file);
           strcpy(accessKey, line);
           accessKey[strcspn(accessKey, "\n")] =
-              '\0'; // Remover a quebra de linha
+              '\0'; 
           break;
         }
       }
@@ -662,7 +657,7 @@ void homeResidente(char *nomeResidente) {
 void calendario(char *nomeResidente) {
 
   int dias = 30;
-  int diaSemana = 2; // 0 = Domingo, 1 = Segunda-feira, ..., 6 = Sábado
+  int diaSemana = 2;
   int tempoPermanencia[dias + 1];
   memset(tempoPermanencia, 0, sizeof(tempoPermanencia));
 
@@ -679,12 +674,12 @@ void calendario(char *nomeResidente) {
 
   while (fgets(line, sizeof(line), file) != NULL) {
     strcpy(name, line);
-    name[strcspn(name, "\n")] = '\0'; // Remover a quebra de linha
+    name[strcspn(name, "\n")] = '\0';
     if (strcmp(name, nomeResidente) == 0) {
       residentFound = 1;
       fgets(line, sizeof(line), file);
       strcpy(accessKey, line);
-      accessKey[strcspn(accessKey, "\n")] = '\0'; // Remover a quebra de linha
+      accessKey[strcspn(accessKey, "\n")] = '\0';
       break;
     }
   }
@@ -705,7 +700,7 @@ void calendario(char *nomeResidente) {
 
     while (fscanf(presenceFile, "%6s %c %d-%d-%d", presenceAccessKey,
                   &entryOrExit, &year, &month, &day) == 5) {
-      fgets(line, sizeof(line), presenceFile); // Ignorar a hora
+      fgets(line, sizeof(line), presenceFile);
       if (strcmp(presenceAccessKey, accessKey) == 0 && entryOrExit == 'S') {
         fscanf(presenceFile, "%d", &seconds);
         tempoPermanencia[day] += seconds;
@@ -724,17 +719,17 @@ void calendario(char *nomeResidente) {
 
   for (int dia = 1; dia <= dias; dia++) {
     if (tempoPermanencia[dia] == 0) {
-      printf("\033[90m"); // Cinza
+      printf("\033[90m");
     } else if (tempoPermanencia[dia] >= 28740) {
-      printf("\033[32m"); // Verde
+      printf("\033[32m");
     } else if (tempoPermanencia[dia] <= 1800) {
-      printf("\033[31m"); // Vermelho
+      printf("\033[31m");
     } else {
-      printf("\033[33m"); // Amarelo
+      printf("\033[33m");
     }
 
     printf("%3d ", dia);
-    printf("\033[0m"); // Resetar cor
+    printf("\033[0m");
 
     if ((dia + diaSemana) % 7 == 0) {
       printf("\n");
@@ -758,12 +753,12 @@ void showTotalProgress(char *nomeResidente) {
 
   while (fgets(line, sizeof(line), file) != NULL) {
     strcpy(name, line);
-    name[strcspn(name, "\n")] = '\0'; // Remover a quebra de linha
+    name[strcspn(name, "\n")] = '\0';
     if (strcmp(name, nomeResidente) == 0) {
       residentFound = 1;
       fgets(line, sizeof(line), file);
       strcpy(accessKey, line);
-      accessKey[strcspn(accessKey, "\n")] = '\0'; // Remover a quebra de linha
+      accessKey[strcspn(accessKey, "\n")] = '\0'; 
       break;
     }
   }
@@ -790,7 +785,7 @@ void showTotalProgress(char *nomeResidente) {
 
   while (fscanf(presenceFile, "%6s %c %d-%d-%d", presenceAccessKey,
                 &entryOrExit, &year, &month, &day) == 5) {
-    fgets(line, sizeof(line), presenceFile); // Ignorar a hora
+    fgets(line, sizeof(line), presenceFile);
     if (strcmp(presenceAccessKey, accessKey) == 0) {
       accessKeyFound = 1;
       if (entryOrExit == 'S') {
@@ -835,7 +830,7 @@ void registro(char *nomeResidente, char *accessKey) {
     return;
   }
 
-  char line[100]; // Adicione esta linha para declarar a variável line
+  char line[100];
   char presenceAccessKey[ACCESS_KEY_LENGTH + 1];
   char entryOrExit;
   int seconds;
@@ -843,7 +838,7 @@ void registro(char *nomeResidente, char *accessKey) {
 
   while (fscanf(presenceFile, "%6s %c %d-%d-%d", presenceAccessKey,
                 &entryOrExit, &year, &month, &day) == 5) {
-    fgets(line, sizeof(line), presenceFile); // Ignorar a hora
+    fgets(line, sizeof(line), presenceFile);
     if (strcmp(presenceAccessKey, accessKey) == 0 && entryOrExit == 'S') {
       fscanf(presenceFile, "%d", &seconds);
       tempoPermanencia[day] += seconds;
@@ -865,7 +860,7 @@ void registro(char *nomeResidente, char *accessKey) {
 
   for (int dia = 1; dia <= dias; dia++) {
     if (tempoPermanencia[dia] > 0) {
-      fseek(file2, 0, SEEK_SET); // Voltar para o início do arquivo
+      fseek(file2, 0, SEEK_SET);
       infoFound = 0;
 
       while (fgets(line2, sizeof(line2), file2) != NULL) {
@@ -945,7 +940,6 @@ void homeTotem() {
     }
     fclose(f);
 
-    // Questionamentos
     char programa_residencia[256];
     char atividade_dia[256];
 
@@ -956,7 +950,6 @@ void homeTotem() {
     printf("Atividade do dia (Teóricas/Práticas): ");
     scanf("%s", atividade_dia);
 
-    // Salvando no arquivo de registro
     f = fopen("registroResidente.txt", "a");
     fprintf(f, "%s %s %d-%02d-%02d %s\n", access_key, programa_residencia,
             t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, atividade_dia);
@@ -1345,16 +1338,16 @@ void ListaDeResidentesGestor() {
   char linha[100];
   while (fgets(linha, sizeof(linha), arquivo) != NULL) {
     if (strstr(linha, "Nome:") ==
-        linha) { // Verifica se a linha começa com "Nome:"
-      strcpy(residentes[numResidentes].nome, linha + 6); // Ignora "Nome: "
+        linha) {
+      strcpy(residentes[numResidentes].nome, linha + 6);
       residentes[numResidentes]
           .nome[strcspn(residentes[numResidentes].nome, "\n")] = '\0';
 
       while (fgets(linha, sizeof(linha), arquivo) != NULL) {
         if (strstr(linha, "Curso:") ==
-            linha) { // Verifica se a linha começa com "Curso:"
+            linha) {
           strcpy(residentes[numResidentes].curso,
-                 linha + 7); // Ignora "Curso: "
+                 linha + 7);
           residentes[numResidentes]
               .curso[strcspn(residentes[numResidentes].curso, "\n")] = '\0';
           break;
